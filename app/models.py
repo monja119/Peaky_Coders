@@ -36,3 +36,17 @@ class Recyclage(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     date = models.DateField(auto_now=True)
+
+
+class Question(models.Model):
+    email = models.EmailField(max_length=50)
+    objet = models.CharField(max_length=50)
+    question = models.TextField()
+    date = models.DateField(auto_now=True)
+
+
+class Answer(models.Model):
+    email = models.EmailField(max_length=50)
+    question_id = models.IntegerField()
+    content = models.TextField()
+    date = models.DateField(auto_now=True)

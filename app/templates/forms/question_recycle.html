@@ -1,0 +1,38 @@
+{% load static %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+          <div class="card mt-5 col-10 mb-5" style="color: black">
+            <div class="card-body login-card-body">
+              <p class="login-box-msg">Comment recycler ... ?</p>
+
+              <form action="{% url 'emailAddModule' %}" method="post">
+                  {% csrf_token%}
+
+                <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="email" name="email" placeholder="Votre Email" required>
+                </div>
+                  <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="text" name="objet" placeholder="Objet" required>
+                </div>
+                  <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="text" name="question" placeholder="Votre question" required>
+                </div>
+
+                <div class="row justify-content-center mb-3">
+                  <!-- /.col -->
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-success btn-block">Questionner</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}">
+</script>

@@ -8,7 +8,6 @@
     <p id="q">
     </p>
     <div class="row ">
-
             {% for content in recycle %}
                 <div class="col-md-3">
                 <div class="card bg-success cursor-pointer" onclick="url('q', 'recycle/view/?id={{ content.id }}', '{{ content.title }}')">
@@ -31,6 +30,8 @@
             <!-- /.share -->
 
     </div>
+
+
 </div>
 
 <script type="text/javascript" src="{% static 'js/main.js' %}">

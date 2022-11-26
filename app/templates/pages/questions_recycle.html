@@ -1,6 +1,64 @@
 {% load static %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+          <div class="card mt-5 col-10 mb-5" style="color: black">
+            <div class="card-body login-card-body">
+              <p class="login-box-msg">Comment recycler ... ?</p>
 
-questions de recyclage
+              <form action="{% url 'newQuestion' %}" method="post">
+                  {% csrf_token%}
+
+                <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="email" name="email" placeholder="Votre Email" required>
+                </div>
+                  <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="text" name="objet" placeholder="Objet" required>
+                </div>
+                  <div class="row input-group mb-3">
+                    <input class="col-12 ml-2" type="text" name="question" placeholder="Votre question" required>
+                </div>
+
+                <div class="row justify-content-center mb-3">
+                  <!-- /.col -->
+                  <div>
+                    <button type="submit" class="btn btn-success btn-block">Questionner</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+              </form>
+
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+    </div>
+    <div class="row mt-2 mb-2" id="content-question">
+
+    </div>
+        <div class="row mb-2">
+            {% for content in question %}
+                <div class="col-md-3">
+                <div class="card bg-success cursor-pointer" onclick="url('content-question', 'recycle/question/view/?id={{ content.id }}#content-id', '{{ content.objet }}')">
+                  <div class="card-header">
+                    <h3 class="share-title">{{ content.objet }}</h3>
+
+                    <div class="share-tools">
+                      {{ content.email }} - {{ content.date}}
+                    </div>
+                    <!-- /.share-tools -->
+                  </div>
+                  <!-- /.share-header -->
+                  <div class="share-body p-1 bg-white" style="color:black;text-overflow: ellipsis;overflow: hidden;height: 200px">
+                    {{ content.question }}
+                  </div>
+                  <!-- /.share-body -->
+                </div>
+                </div>
+            {% endfor %}
+
+    </div>
+</div>
+
+
 
 <script type="text/javascript" src="{% static 'js/main.js' %}">
 </script>

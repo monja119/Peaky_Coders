@@ -25,6 +25,9 @@ urlpatterns = [
     re_path('^recycle/share/$', Recycle().share, name='shareRecycle'),
     re_path('^recycle/view/', Recycle().view, name='viewRecycle'),
     re_path('^recycle/question/$', Recycle().question, name='questionRecycle'),
+    re_path('^recycle/question/new/$', Recycle().new_question, name='newQuestion'),
+    re_path('^recycle/question/view/', Recycle().view_question, name='viewQuestion'),
+    re_path('^recycle/question/answer/$', Recycle().answer_question, name='answerQuestion'),
     re_path('^recycle/new/$', Recycle().new_recycle, name='newRecycle'),
 
     # MODULES

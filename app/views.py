@@ -151,8 +151,44 @@ class Recycle:
                 return HttpResponse('Recyclage non trouvé')
 
     def question(self, request):
+        question = Question.objects.all()
         return render(request, 'pages/questions_recycle.html', locals())
 
+    def new_question(self, request):
+        if request.method == 'POST':
+            question = Question()
+            question.email = request.POST['email']
+            question.objet = request.POST['objet']
+            question.question = request.POST['question']
+
+            question.save()
+            return redirect('home')
+        else:
+            return HttpResponse('new question')
+
+    def view_question(self, request):
+        try:
+            id = int(request.GET['id'])
+            question = Question.objects.get(id=id)
+            return render(request, 'pages/view_question.html', locals())
+
+        except:
+            return HttpResponse('Question non trouvé')
+
+    def answer_question(self, request):
+        if request.method == 'POST':
+            answer = Answer()
+            answer.email = request.POST['email']
+            answer.question_id = request.POST['question_id']
+            answer.content = request.POST['answer']
+
+            answer.save()
+
+            return HttpResponse('Question répondue')
+
+        else:
+            error_msg = 'Une Erreur survenue'
+            render(request, 'tabs/errors.html', locals())
     def new_recycle(self, request):
         if request.method == 'POST':
             recycle = Recyclage()
