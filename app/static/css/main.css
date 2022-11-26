@@ -57,7 +57,7 @@ body{
 .dropdown-list{
     text-align: center;
     text-transform: uppercase;
-    background-color: rgba(20, 20, 20, 0.5);
+    background-color: rgba(20, 100, 20, 0.5);
     padding-top: 1%;
     font-weight: bold;
     transition-property: font-size;
@@ -69,4 +69,11 @@ body{
     background-color: #1a252f;
     font-size: 30px;
 
+}
+
+.ico-tab{
+    height:20px;
+    width: 15%;
+    margin-left: 5px;
+    margin-top: -2%;
 }
