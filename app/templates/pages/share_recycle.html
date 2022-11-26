@@ -8,24 +8,27 @@
     <p id="q">
     </p>
     <div class="row ">
-        <div class="col-md-3">
-            <div class="card bg-success">
-              <div class="card-header">
-                <h3 class="share-title">Title</h3>
 
-                <div class="share-tools">
-                  author - date - lector
+            {% for content in recycle %}
+                <div class="col-md-3">
+                <div class="card bg-success cursor-pointer" onclick="url('q', 'recycle/view/?id={{ content.id }}', '{{ content.title }}')">
+                  <div class="card-header">
+                    <h3 class="share-title">{{ content.title }}</h3>
+
+                    <div class="share-tools">
+                      {{ content.email }} - {{ content.date}}
+                    </div>
+                    <!-- /.share-tools -->
+                  </div>
+                  <!-- /.share-header -->
+                  <div class="share-body p-1 bg-white" style="color:black;text-overflow: ellipsis;overflow: hidden;height: 200px">
+                    {{ content.content }}
+                  </div>
+                  <!-- /.share-body -->
                 </div>
-                <!-- /.share-tools -->
-              </div>
-              <!-- /.share-header -->
-              <div class="share-body p-1 bg-white" style="color:black">
-                The body of the share
-              </div>
-              <!-- /.share-body -->
-            </div>
+                </div>
+            {% endfor %}
             <!-- /.share -->
-          </div>
 
     </div>
 </div>

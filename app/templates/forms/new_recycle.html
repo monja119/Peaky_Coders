@@ -1,6 +1,7 @@
-<!-- Main content -->
+{% load static %}
 
 <form action="{% url 'newRecycle' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     <section class="content" style="color:black">
       <div class="row">
         <div class="col-md-12">
@@ -41,3 +42,5 @@
     </div>
     <!-- /.content-wrapper -->
 </form>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>

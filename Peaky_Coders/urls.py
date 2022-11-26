@@ -23,6 +23,7 @@ urlpatterns = [
 
     # recyclage
     re_path('^recycle/share/$', Recycle().share, name='shareRecycle'),
+    re_path('^recycle/view/', Recycle().view, name='viewRecycle'),
     re_path('^recycle/question/$', Recycle().question, name='questionRecycle'),
     re_path('^recycle/new/$', Recycle().new_recycle, name='newRecycle'),
 

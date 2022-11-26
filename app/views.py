@@ -138,7 +138,17 @@ class UserView:
 
 class Recycle:
     def share(self, request):
+        recycle = Recyclage.objects.all()
         return render(request, 'pages/share_recycle.html', locals())
+
+    def view(self, request):
+        if request.method == 'GET':
+            try:
+                id = int(request.GET['id'])
+                recycle = Recyclage.objects.get(id=id)
+                return render(request, 'pages/view_recycle.html', locals())
+            except KeyError:
+                return HttpResponse('Recyclage non trouvé')
 
     def question(self, request):
         return render(request, 'pages/questions_recycle.html', locals())
@@ -153,5 +163,5 @@ class Recycle:
             recycle.save()
 
             return redirect('home')
-
-        return render(request, 'forms/new_recycle.html', locals())
+        else:
+            return render(request, 'forms/new_recycle.html', locals())
