@@ -44,9 +44,11 @@ class Scrapping:
             #WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
             #resultats = browser.find_element(by.XPATH, "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")
             
-                
+            
         except:
             pass
+        
+        browser.close()
 '''
 element_mail = browser.find_element(By.NAME,"email")
 element_mail.send_keys("angelo21.aps2b@gmail.com")
@@ -87,7 +89,7 @@ def croppingImage(name):
     
 if __name__ == '__main__':
     origine = 'Parc zoologique et botanique de Tsimbazaza, 3G9G+V6C, Antananarivo'
-    destination = "Jean de la Croix de la Trinité RAFANOMEZANTSOA"
+    destination = "Alubat Services NACM"
     execute = Scrapping(origine, destination)
     execute.scrap()
     name = str(origine + destination)
