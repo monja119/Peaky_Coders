@@ -33,9 +33,10 @@ function url(content_id, url, title, arg){
 if(base == null){
     window.location.href = domain;
 }
-url('content', 'data/', 'Data', '')
 
-
+function homepage(){
+    window.location.href = domain;
+}
 function loop(content_id, url, title, temoin){
     do {
         let xhttp = new XMLHttpRequest();

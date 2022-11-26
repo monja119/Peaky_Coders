@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path, re_path
-from app.views import Tabs
+from app.views import Tabs, UserView
 
 tab = Tabs()
+user = UserView()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,5 +12,9 @@ urlpatterns = [
     re_path('^recyclage/$', tab.recyclage, name='recyclage'),
     re_path('^bin/$', tab.bin, name='bin'),
     re_path('^extra/$', tab.extra, name='extra'),
+
+    # user
+    re_path('^user/login/$', user.login, name='login'),
+
 
 ]

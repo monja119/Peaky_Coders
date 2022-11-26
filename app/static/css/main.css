@@ -62,7 +62,7 @@ body{
     font-weight: bold;
     transition-property: font-size;
     transition-duration: 1s;
-
+    cursor: pointer;
 }
 
 .dropdown-list:hover{

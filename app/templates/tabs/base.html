@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row d-none d-sm-flex" style="height: 52px">
-                <div class="col-2" style="background-color: rgba(20, 20, 20, 0.5);text-align:center;">
+                <div onclick="homepage()" class="col-2" style="background-color: rgba(20, 20, 20, 0.5);text-align:center;cursor: pointer;">
                     <img src="{% static 'images/illustrations/logo.png' %}" class="mt-2" style="width: 15%;" alt="dropdown" id="dropdown">
                 </div>
                 <div class="col-2 dropdown-list" onclick="url('content', 'data/', 'Data', '')">
@@ -44,7 +44,7 @@
 
                 <div class="col-2 pt-2" style="background-color: rgba(20, 100, 20, 0.5);text-align: center;">
                     <input type="text" class="rounded" style="width: 80%;background: rgba(200, 200, 200, 0.3);border: 1px solid black">
-                    <img src="{% static 'images/illustrations/search.png' %}" class="ico-tab mt-1" alt="dropdown" id="dropdown">
+                    <img src="{% static 'images/illustrations/search.png' %}" class="ico-tab mt-1" alt="dropdown" id="dropdown" style="cursor: pointer;">
 
                 </div>
             </div>
@@ -54,7 +54,17 @@
     <input type="hidden" id="base">
 
     <section id="content">
-        content
+        {% block content %}
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <section  id="form-login">
+                    </section>
+                   <h2 id='login' onclick="url('form-login', 'user/login', 'Identification', '')">
+                       s'identifier
+                   </h2>
+                </div>
+            </div>
+        {% endblock %}
     </section>
 
 
