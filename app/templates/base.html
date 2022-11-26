@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id="page-title">
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row p-2 bg-dark  d-block d-sm-none">
+                <div class="col-8">
+                    <img src="{% static 'images/illustrations/extra.png' %}" style="width: 15%;" alt="dropdown" id="dropdown">
+                </div>
+            </div>
+            <div class="row d-none d-sm-flex" style="height: 52px">
+                <div class="col-2" style="background-color: rgba(20, 20, 20, 0.5);">
+
+                </div>
+                <div class="col-2 dropdown-list">
+                    Data
+                </div>
+                <div class="col-2 dropdown-list">
+                    Recyclage
+                </div>
+                <div class="col-2 dropdown-list">
+                    Bin
+                </div>
+                <div class="col-2 dropdown-list">
+                    Extra
+                </div>
+
+                <div class="col-2 dropdown-list">
+                    recherche
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+    </footer>
+    <script type="text/javascript" src="{% static 'js/main.js' %}">
+    </script>
+
+</body>
+</html>
