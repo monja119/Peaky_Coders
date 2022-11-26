@@ -38,11 +38,10 @@ class UserView:
                 if user.password == user_password:
                     user_id = User.id
                     self.set_session(user.id)
-                    msg = f'this user is {user.first_name} and has {user.id} id'
+                    return render(request, 'tabs/home.html', locals())
                 else:
-                    return HttpResponse('Mot de passe incorrecte')
+                    return render(request, 'tabs/errors.html', locals())
 
-                return HttpResponse(msg)
             except User.DoesNotExist:
                 return HttpResponse("User doesn't match any account")
         else:
@@ -68,7 +67,7 @@ class UserView:
                 try:
                     User.objects.get(email=email)
                     error_msg = 'Email déjà utilisé par un autre utilisateur'
-                    return render(request, 'forms/register.html', locals())
+                    return render(request, 'tabs/errors.html', locals())
                 except User.DoesNotExist:
                     # about
                     form.save()
@@ -84,7 +83,7 @@ class UserView:
                     user.password = make_password(password, None, 'default')
 
                     user.save()
-                    return redirect(Page().home)
+                    return redirect(Tabs().home)
         else:
             return render(request, 'forms/register.html', locals())
 
