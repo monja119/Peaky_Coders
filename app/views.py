@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, request
 from django.contrib.auth.hashers import make_password, check_password
-from app.models import User
+from app.models import *
 from app.forms import UserForm
 
 
@@ -142,3 +142,16 @@ class Recycle:
 
     def question(self, request):
         return render(request, 'pages/questions_recycle.html', locals())
+
+    def new_recycle(self, request):
+        if request.method == 'POST':
+            recycle = Recyclage()
+            recycle.email = request.POST['email']
+            recycle.title = request.POST['title']
+            recycle.content = request.POST['content']
+
+            recycle.save()
+
+            return redirect('home')
+
+        return render(request, 'forms/new_recycle.html', locals())

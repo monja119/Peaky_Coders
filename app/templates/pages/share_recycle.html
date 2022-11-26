@@ -1,1 +1,34 @@
-share recycle
+{% load static %}
+
+
+<div class="container-fluid pt-5">
+    <div class="row " id="ecrire-recyle">
+        <input onclick="url('q', 'recycle/new/', 'Ecrire une idée de recyclage', '')" type="button" class="col-1 ml-3 mb-3 btn btn-primary btn-block" value="Ecrire">
+    </div>
+    <p id="q">
+    </p>
+    <div class="row ">
+        <div class="col-md-3">
+            <div class="card bg-success">
+              <div class="card-header">
+                <h3 class="share-title">Title</h3>
+
+                <div class="share-tools">
+                  author - date - lector
+                </div>
+                <!-- /.share-tools -->
+              </div>
+              <!-- /.share-header -->
+              <div class="share-body p-1 bg-white" style="color:black">
+                The body of the share
+              </div>
+              <!-- /.share-body -->
+            </div>
+            <!-- /.share -->
+          </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}">
+</script>

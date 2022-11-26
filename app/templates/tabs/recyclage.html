@@ -2,21 +2,16 @@
 
 <div class="container-fluid">
 
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-rec-learn', 'recycle/share/', 'Apprendre sur le recyclage')">
-            Partage sur le recyclage
-        </h1>
+    <div class="row mt-3">
+        <div class="col-1 cursor-pointer scale-up" style="text-align: center" onclick="url('content-rec', 'recycle/share/', 'Apprendre sur le recyclage')">
+            <img src="{% static 'images/illustrations/learning.png' %}" class="middle-image" alt="learn recycle">
+        </div>
+        <div class="col-1 cursor-pointer scale-up" onclick="url('content-rec', 'recycle/question/', 'Questions sur le recyclage')">
+            <img src="{% static 'images/illustrations/communication.png' %}" class="middle-image" alt="questions recycle" id="dropdown">
+        </div>
     </div>
-    <div class="row justify-content-center" id="content-rec-learn">
 
-    </div>
-
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-rec-question', 'recycle/question/', 'Question sur le recyclage')">
-            Questions
-        </h1>
-    </div>
-    <div class="row justify-content-center" id="content-rec-question">
+    <div class="row justify-content-center" id="content-rec">
 
     </div>
 </div>

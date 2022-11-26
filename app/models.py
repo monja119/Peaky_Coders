@@ -29,3 +29,10 @@ class Email(models.Model):
 
 class File(models.Model):
     file = models.FileField(upload_to='files/compressor/')
+
+
+class Recyclage(models.Model):
+    email = models.EmailField(max_length=50)
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    date = models.DateField(auto_now=True)
