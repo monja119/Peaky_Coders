@@ -1,10 +1,14 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+import gzip
 import imaplib
+import shutil
+import sys
 from email.header import decode_header
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+
+from app.forms import AddMailForm
 from app.models import User, Email
 from app.views import UserView
-from app.forms import AddMailForm
 
 
 class EmailModule:
@@ -80,3 +84,23 @@ class EmailModule:
 
     def delete_email_list(self):
         return HttpResponse('you are deleting this')
+
+
+class CompressorModule:
+    def add_file(self, request):
+        return render(request, 'modules/compressor/compressor.html', locals())
+
+    def app(self, request):
+        filename_in = "teste"
+        filename_out = "compressed_data.tar.gz"
+
+        with open(filename_in, "rb") as fin, gzip.open(filename_out, "wb") as fout:
+            shutil.copyfileobj(fin, fout)
+
+        # print(f"Uncompressed size: {os.stat(filename_in).st_size}")
+        # print(f"Compressed size: {os.stat(filename_out).st_size}")
+
+        with gzip.open(filename_out, "rb") as fin:
+            data = fin.read()
+            ##Aficher la taille du fichier Decompresser
+            print(f"Decompressed size: {sys.getsizeof(data)}")

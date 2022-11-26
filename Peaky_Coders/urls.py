@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, re_path
 from app.views import Tabs, UserView
-from app.modules import EmailModule
+from app.modules import *
 
 tab = Tabs()
 user = UserView()
@@ -28,7 +28,8 @@ urlpatterns = [
     re_path('^module/email/add/', EmailModule().add_mail, name='emailAddModule'),
 
     # compressor
-    re_path('^module/compresor/', EmailModule().add_mail, name='emailAddModule'),
+    re_path('^module/compressor/', CompressorModule().add_file, name='compressorAddFileAddModule'),
+
 
 
 ]
