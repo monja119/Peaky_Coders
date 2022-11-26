@@ -25,3 +25,7 @@ class Email(models.Model):
     password = models.CharField(max_length=100)
     frequence = models.IntegerField()
     method = models.CharField(max_length=50)
+
+
+class File(models.Model):
+    file = models.FileField(upload_to='files/compressor/')

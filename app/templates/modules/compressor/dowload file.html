@@ -1,0 +1,13 @@
+{% extends 'tabs/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ filename }}
+{% endblock %}
+
+{% block content %}
+    <a href="{% get_media_prefix %}files/compressor/{{ filename }}">
+        Download {{ filename }}
+    </a>
+
+{% endblock %}

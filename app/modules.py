@@ -3,11 +3,11 @@ import imaplib
 import shutil
 import sys
 from email.header import decode_header
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.shortcuts import render, redirect
 
 from app.forms import AddMailForm
-from app.models import User, Email
+from app.models import User, Email, File
 from app.views import UserView
 
 
@@ -88,7 +88,31 @@ class EmailModule:
 
 class CompressorModule:
     def add_file(self, request):
-        return render(request, 'modules/compressor/compressor.html', locals())
+
+        if request.method == 'POST':
+            msg = ''
+            file = File()
+            file.file = request.FILES['file']
+            filename = file.file
+            file.save()
+            filename = f'app/media/{str(filename)}'
+
+            filename_out = f"{filename}.giz.tar"
+
+            with open(filename, "rb") as fin, gzip.open(filename_out, "wb") as fout:
+                shutil.copyfileobj(fin, fout)
+
+            # print(f"Uncompressed size: {os.stat(filename_in).st_size}")
+            # print(f"Compressed size: {os.stat(filename_out).st_size}")
+
+            with gzip.open(filename_out, "rb") as fin:
+                data = fin.read()
+                ##Aficher la taille du fichier Decompresser
+                print(f"Decompressed size: {sys.getsizeof(data)}")
+            filename = filename_out.split('/')[-1]
+            return FileResponse(open(filename_out, 'rb'), as_attachment=True)
+        else:
+            return render(request, 'modules/compressor/compressor.html', locals())
 
     def app(self, request):
         filename_in = "teste"
