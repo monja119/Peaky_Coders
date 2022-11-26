@@ -1,0 +1,72 @@
+body{
+    background-color: #1a252f;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color:white;
+}
+@keyframes scaleUp {
+    0%{
+        size: -15px;
+    }
+    100%{
+        size: 100px;
+    }
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    100%{
+        opacity: 0;
+    }
+    0%{
+        opacity: 1;
+    }
+}
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes slideRight {
+    0%{
+        margin-left: -100px;
+    }
+    100%{
+        margin-left: 0;
+    }
+}
+@keyframes slideDown {
+    0%{
+        margin-top: -100px;
+    }
+    100%{
+        margin-left: 0;
+    }
+}
+
+.dropdown-list{
+    text-align: center;
+    text-transform: uppercase;
+    background-color: rgba(20, 20, 20, 0.5);
+    padding-top: 1%;
+    font-weight: bold;
+    transition-property: font-size;
+    transition-duration: 1s;
+
+}
+
+.dropdown-list:hover{
+    background-color: #1a252f;
+    font-size: 30px;
+
+}
