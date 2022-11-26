@@ -20,6 +20,7 @@ tab = Tabs()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^$', tab.data, name='data'),
     re_path('^data/$', tab.data, name='data'),
     re_path('^recyclage/$', tab.recyclage, name='recyclage'),
     re_path('^bin/$', tab.bin, name='bin'),

@@ -9,12 +9,12 @@ class Tabs:
 
     def recyclage(self, request):
         msg = "Views2"
-        return Httpresponse(msg)
+        return render(request, 'tabs/recyclage.html', locals())
 
     def bin(self, request):
         msg = "Views3"
-        return Httpresponse(msg)
+        return render(request, 'tabs/bin.html', locals())
 
     def extra(self, request):
         msg = "Views4"
-        return Httpresponse(msg)
+        return render(request, 'tabs/extra.html', locals())
