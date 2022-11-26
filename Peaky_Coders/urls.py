@@ -27,5 +27,8 @@ urlpatterns = [
     re_path('^module/email/delete/$', EmailModule().delete_email_list, name='emailDeleteModule'),
     re_path('^module/email/add/', EmailModule().add_mail, name='emailAddModule'),
 
+    # compressor
+    re_path('^module/compresor/', EmailModule().add_mail, name='emailAddModule'),
+
 
 ]
