@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+import email
+import imaplib
+from email.header import decode_header
 
 
 class Class1:
@@ -15,7 +18,8 @@ class Class1:
         msg = "Views2"
         return Httpresponse(msg)
     
-    def views3(request):
+    def delete_email(request):
+        
         msg = "Views3"
         return Httpresponse(msg)
     
