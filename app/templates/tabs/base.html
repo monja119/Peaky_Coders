@@ -56,11 +56,30 @@
     <section id="content">
         {% block content %}
             <div class="container-fluid">
-                <div class="row mt-3 justify-content-center" id="form-login">
-                    <h2 id='login' onclick="url('form-login', 'user/login', 'Identification', '')">
-                       S'identifier
-                   </h2>
+
+                <div class="row mt-3 justify-content-center" id="msg">
+                    <p style="color: red">
+                        {{ error_msg }}
+                    </p>
+                    <p style="color: green">
+                        {{ success_msg }}
+                    <p>
                 </div>
+                {% if session is not None %}
+                    <div class="row mt-3 justify-content-center" id="form-login">
+                        <h2 id='login' onclick="url('form-login', 'user/logout', '', '')">
+                           Se deconnecter
+                       </h2>
+                    </div>
+                {% else %}
+                    <div class="row mt-3 justify-content-center" id="form-login">
+                        <h2 id='login' onclick="url('form-login', 'user/login', 'Identification', '')">
+                           S'identifier
+                       </h2>
+                    </div>
+                {% endif %}
+
+
             </div>
         {% endblock %}
     </section>

@@ -17,3 +17,10 @@ class User(models.Model):
     address = models.CharField(max_length=50, null=True)
 
     password = models.CharField(max_length=200)
+
+
+class Email(models.Model):
+    user = models.IntegerField()
+    email = models.EmailField(max_length=50, null=True)
+    password = models.CharField(max_length=100)
+    frequence = models.IntegerField()

@@ -8,7 +8,16 @@ from app.forms import UserForm
 class Tabs:
     def home(self, request):
         msg = "Views1"
+        if UserView().check_session is not None:
+            session = UserView().check_session(request)
+        else:
+            session = None
+
         return render(request, 'tabs/home.html', locals())
+
+    def base(self, request):
+        msg = "Views2"
+        return render(request, 'tabs/base.html', locals())
 
     def data(self, request):
         msg = "Views1"
@@ -35,15 +44,19 @@ class UserView:
             user_remember = request.POST.get('remember')
             try:
                 user = User.objects.get(email=user_email)
-                if user.password == user_password:
-                    user_id = User.id
-                    self.set_session(user.id)
-                    return render(request, 'tabs/home.html', locals())
+                if check_password(user_password, user.password):
+                    user_id = user.id
+                    request.session['id'] = user_id
+                    session = self.check_session(request)
+                    success_msg = 'Vous êtes connecté'
+                    return render(request, 'tabs/base.html', locals())
                 else:
-                    return render(request, 'tabs/errors.html', locals())
+                    error_msg = 'Mot de passe incorrect'
+                    return render(request, 'tabs/base.html', locals())
 
             except User.DoesNotExist:
-                return HttpResponse("User doesn't match any account")
+                error_msg = 'Identifiant non identifié'
+                return render(request, 'tabs/base.html', locals())
         else:
             return render(request, 'forms/login.html', locals())
 
@@ -83,7 +96,9 @@ class UserView:
                     user.password = make_password(password, None, 'default')
 
                     user.save()
-                    return redirect(Tabs().home)
+
+                    success_msg = 'Création de compte avec succès'
+                    return render(request, 'tabs/home.html', locals())
         else:
             return render(request, 'forms/register.html', locals())
 
@@ -104,7 +119,7 @@ class UserView:
         except:
             return -1
 
-    def check_session(self, id):
+    def check_session(self, request):
         session = None
         try:
             session = request.session['id']
@@ -112,9 +127,12 @@ class UserView:
             session = None
         return session
 
-    def logout(self, request, id):
+    def logout(self, request):
         try:
             del request.session['id']
         except:
             pass
-        return HttpResponse(f'logged out {id}')
+        success_msg = 'Vous êtes deconnectés'
+        return redirect('data')
+
+
