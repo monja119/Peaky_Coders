@@ -1,27 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from app.models import User, Email
 import imaplib
-import email
 from email.header import decode_header
+from app.models import User, Email
+from app.views import UserView
+from app.forms import AddMailForm
 
 
-class Spam:
+class EmailModule:
+    def home(self, request):
+        user_id = UserView().check_session(request)
+        user = User.objects.get(id=user_id)
+        email = Email.objects.filter(user=user.id)
+
+        return render(request, 'modules/email/email.html', locals())
+
     def add_mail(self, request):
-        if request == request.POST:
-            try:
-                email = request.POST.get('email')
-                password = request.POST.get('password')
-                frequence = request.POST.get('frequence')
-                email_password = request.get('email_password')
-                add_mail = Email(email=email, password=password, frequence=frequence)
-                add_mail.add()
-                add_mail.save()
-                return HttpResponse('Email added!!')
+        if request.method == 'POST':
+            form = AddMailForm(request.POST)
+            email = Email()
 
-            except:
-                return HttpResponse('ADD ERROR!!')
+            email.user = request.POST['user_id']
+            email.email = request.POST['email']
+            email.password = password = request.POST['password']
+            email.frequence = frequence = request.POST['frequence']
+            email.memethod = method = request.POST['method']
 
+            value = request.POST['value']
+
+            email.save()
+            success_msg = 'Mail Ajouté'
+            return redirect('home')
+        user_id = request.GET['user_id']
+        return render(request, 'forms/add_email.html', locals())
 
     def delete_email(self, request, id_user):
         msg = "Views2"
@@ -66,3 +77,6 @@ class Spam:
             imap.logout()
         except:
             return HttpResponse('ERROR')
+
+    def delete_email_list(self):
+        return HttpResponse('you are deleting this')

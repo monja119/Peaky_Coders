@@ -55,15 +55,3 @@ function loop(content_id, url, title, temoin){
 }
 
 
-
-let start_btn = document.getElementById('btn-start');
-start_btn.onclick = function (){
-    if(temoin === true){
-        temoin = false
-        start_btn.value = 'Start'
-    }else{
-        temoin = true;
-        start_btn.value = 'Stop'
-    }
-
-}
