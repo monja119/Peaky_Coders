@@ -29,15 +29,15 @@
                     <img src="{% static 'images/illustrations/data.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Data
                 </div>
-                <div class="col-2 dropdown-list" onclick="url('content', 'recyclage/', 'Data', '')">
+                <div class="col-2 dropdown-list" onclick="url('content', 'recyclage/', 'Recyclage', '')">
                     <img src="{% static 'images/illustrations/recyclage.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Recyclage
                 </div>
-                <div class="col-2 dropdown-list" onclick="url('content', 'bin/', 'Data', '')">
+                <div class="col-2 dropdown-list" onclick="url('content', 'bin/', 'Bin', '')">
                     <img src="{% static 'images/illustrations/bin.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Bin
                 </div>
-                <div class="col-2 dropdown-list" onclick="url('content', 'extra/', 'Data', '')">
+                <div class="col-2 dropdown-list" onclick="url('content', 'extra/', 'Extra', '')">
                     <img src="{% static 'images/illustrations/dropdown.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Extra
                 </div>
@@ -51,10 +51,10 @@
         </div>
     </header>
 
-    <section id="content">
-        {% block content %}
+    <input type="hidden" id="base">
 
-        {% endblock %}
+    <section id="content">
+        content
     </section>
 
 

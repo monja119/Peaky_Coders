@@ -1,4 +1,5 @@
 let page_title = document.getElementById('page-title');
+let base = document.getElementById('base');
 let domain = 'http://localhost:8000/'
 let temoin = false;
 let nothing = 0;
@@ -27,6 +28,13 @@ function url(content_id, url, title, arg){
     xhttp.open('GET', domain + url);
     xhttp.send()
 }
+
+// restoring and initializing page url
+if(base == null){
+    window.location.href = domain;
+}
+url('content', 'data/', 'Data', '')
+
 
 function loop(content_id, url, title, temoin){
     do {
