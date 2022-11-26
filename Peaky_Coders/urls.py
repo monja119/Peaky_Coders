@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path
-from app.views import Tabs, UserView
+from app.views import *
 from app.modules import *
 
 tab = Tabs()
@@ -20,6 +20,10 @@ urlpatterns = [
     re_path('^user/login/$', user.login, name='login'),
     re_path('^user/register/$', user.register, name='register'),
     re_path('^user/logout/$', user.logout, name='logout'),
+
+    # recyclage
+    re_path('^recycle/share/$', Recycle().share, name='shareRecycle'),
+    re_path('^recycle/question/$', Recycle().question, name='questionRecycle'),
 
     # MODULES
     # email

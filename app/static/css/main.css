@@ -68,7 +68,10 @@ body{
 .dropdown-list:hover{
     background-color: #1a252f;
     font-size: 30px;
-
+}
+#recyclage:hover{
+    background-color: #1a252f;
+    font-size: 20px;
 }
 
 .ico-tab{

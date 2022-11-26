@@ -136,4 +136,9 @@ class UserView:
         return redirect('data')
 
 
+class Recycle:
+    def share(self, request):
+        return render(request, 'pages/share_recycle.html', locals())
 
+    def question(self, request):
+        return render(request, 'pages/questions_recycle.html', locals())
