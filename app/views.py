@@ -5,7 +5,7 @@ from django.http import HttpResponse, request
 class Tabs:
     def data(self, request):
         msg = "Views1"
-        return Httpresponse(msg)
+        return render(request, 'tabs/data.html', locals())
 
     def recyclage(self, request):
         msg = "Views2"
