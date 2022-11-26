@@ -1,5 +1,4 @@
 """Peaky_Coders URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
@@ -14,8 +13,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from app.views import Tabs
+
+tab = Tabs()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^data/$', tab.data, name='data'),
+    re_path('^recyclage/$', tab.recyclage, name='recyclage'),
+    re_path('^bin/$', tab.bin, name='bin'),
+    re_path('^extra/$', tab.extra, name='extra'),
+
 ]
