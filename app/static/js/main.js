@@ -2,8 +2,8 @@ let page_title = document.getElementById('page-title');
 let domain = 'http://localhost:8000/'
 let temoin = false;
 let nothing = 0;
-counter = 0
-function goto(content_id, url, title, arg){
+
+function url(content_id, url, title, arg){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         // changing content

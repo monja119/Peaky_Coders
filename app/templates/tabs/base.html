@@ -25,19 +25,19 @@
                 <div class="col-2" style="background-color: rgba(20, 20, 20, 0.5);text-align:center;">
                     <img src="{% static 'images/illustrations/logo.png' %}" class="mt-2" style="width: 15%;" alt="dropdown" id="dropdown">
                 </div>
-                <div class="col-2 dropdown-list">
+                <div class="col-2 dropdown-list" onclick="url('content', 'data/', 'Data', '')">
                     <img src="{% static 'images/illustrations/data.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Data
                 </div>
-                <div class="col-2 dropdown-list">
+                <div class="col-2 dropdown-list" onclick="url('content', 'recyclage/', 'Data', '')">
                     <img src="{% static 'images/illustrations/recyclage.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Recyclage
                 </div>
-                <div class="col-2 dropdown-list">
+                <div class="col-2 dropdown-list" onclick="url('content', 'bin/', 'Data', '')">
                     <img src="{% static 'images/illustrations/bin.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Bin
                 </div>
-                <div class="col-2 dropdown-list">
+                <div class="col-2 dropdown-list" onclick="url('content', 'extra/', 'Data', '')">
                     <img src="{% static 'images/illustrations/dropdown.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
                     Extra
                 </div>
@@ -51,8 +51,12 @@
         </div>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    <section id="content">
+        {% block content %}
+
+        {% endblock %}
+    </section>
+
 
     <footer>
     </footer>
