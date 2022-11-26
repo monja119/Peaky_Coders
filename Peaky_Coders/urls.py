@@ -15,6 +15,7 @@ urlpatterns = [
 
     # user
     re_path('^user/login/$', user.login, name='login'),
+    re_path('^user/register/$', user.register, name='register'),
 
 
 ]
