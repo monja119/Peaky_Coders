@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, request
+from django.contrib.auth.hashers import make_password, check_password
 from app.models import User
 from app.forms import UserForm
 
