@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
+import cv2
 
 
 class Scrapping:
@@ -33,22 +34,16 @@ class Scrapping:
             itenerary_button = browser.find_element(By.XPATH, '/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div[1]/button')
             itenerary_button.click()
                 
-            second_input = True
-                
             WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input")))
             element_input_lieu = browser.find_element(By.XPATH,"/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input")
             element_input_lieu.send_keys(self.destination)
             element_input_lieu.send_keys(Keys.ENTER)
+            sleep(10)
+            browser.save_screenshot("image.png")
                     
-                    #WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
-                    #resultats = browser.find_element(by.XPATH, "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")
-                    
-            sleep(4)
-            driver.get_screenshot_as_file("screenshot.png")
-                    #driver.quit()
-            print("end...")
-                    
-            go = False
+            #WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
+            #resultats = browser.find_element(by.XPATH, "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")
+            
                 
         except:
             pass
@@ -71,8 +66,30 @@ ex = browser.find_element(By.PARTIAL_LINK_TEXT, "Psychol").text
 for book in ex:
     print(book)'''
     
+
+
+def croppingImage(name):
+    '''
+        Une fonction qui croppe l'image
+    '''
+    image = cv2.imread('image.png')
+    shape = image.shape
+    w = image.shape[0]
+    h = image.shape[1]
+    print(shape)
+    cropped_image = image[80:w-80, int((h/2))-50:int((h)-50)]
+    shape = cropped_image.shape
+    print(shape)
+    cv2.imwrite(f"{name}.png", cropped_image)
+    return name
+
+
+    
 if __name__ == '__main__':
-    origine = 'FJKM Ambatoroka'
-    destination = "ZaraTany-CABINET GEOMETRE EXPERT, Sampanan'i, Tananarive"
+    origine = 'Parc zoologique et botanique de Tsimbazaza, 3G9G+V6C, Antananarivo'
+    destination = "Jean de la Croix de la Trinité RAFANOMEZANTSOA"
     execute = Scrapping(origine, destination)
     execute.scrap()
+    name = str(origine + destination)
+    croppingImage(name)
+    
