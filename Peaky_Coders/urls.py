@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('app/', include('app.urls')),
     path('page1/',views.wiews1),
     path('page2/', views.wiews2),
     path('page3/', views.wiews3),
