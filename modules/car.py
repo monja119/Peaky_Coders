@@ -38,10 +38,21 @@ class Scrapping:
             element_input_lieu = browser.find_element(By.XPATH,"/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input")
             element_input_lieu.send_keys(self.destination)
             element_input_lieu.send_keys(Keys.ENTER)
-            sleep(10)
-            ebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.ID,"widget-zoom-out")))
-            zoom_button = browser.find_element(By.XPATH, "widget-zoom-out")
-            zoom_button.click()
+            
+            car = browser.find_element(By.XPATH, '/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[2]/div/div/div/div[2]/button')
+            car.click()
+            browser.save_screenshot("image.png")
+            sleep(6)
+            #WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]")))
+            
+            resultat = browser.find_element(By.ID,"section-directions-trip-0")
+            resultat = resultat.text
+            
+            resultat = resultat.split('\n')
+            resultat = [i for i in resulta if i != 'Détails']
+            print(resultat)
+            print(type(resultat))
+            print(resultat[0])
             browser.save_screenshot("image.png")
                     
             #WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
@@ -51,26 +62,7 @@ class Scrapping:
         except:
             pass
         
-        browser.close()
-'''
-element_mail = browser.find_element(By.NAME,"email")
-element_mail.send_keys("angelo21.aps2b@gmail.com")
-
-element_pass = browser.find_element(By.NAME, "password")
-element_pass.send_keys("angelokratos.260702//")
-
-browser.find_element(By.NAME, "submit").click()
-
-WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.ID,"searchFieldx")))
-element_search = browser.find_element(By.ID, "searchFieldx")
-element_search.send_keys("psychologie")
-element_search.send_keys(Keys.ENTER)
-
-WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, "Psychol")))
-ex = browser.find_element(By.PARTIAL_LINK_TEXT, "Psychol").text
-for book in ex:
-    print(book)'''
-    
+        #browser.close()
 
 
 def croppingImage(name):
@@ -82,7 +74,7 @@ def croppingImage(name):
     w = image.shape[0]
     h = image.shape[1]
     print(shape)
-    cropped_image = image[70:w-100, int((h/2))-50:int((h)-50)]
+    cropped_image = image[80:w-80, int((h/2))-50:int((h)-50)]
     shape = cropped_image.shape
     print(shape)
     cv2.imwrite(f"{name}.png", cropped_image)
@@ -91,8 +83,8 @@ def croppingImage(name):
 
     
 if __name__ == '__main__':
-    origine = 'Analakely'
-    destination = "Wc Public"
+    origine = 'Université Catholique de Madagascar, 3GHR+3VG, Antananarivo'
+    destination = "Mahamasina, Tananarive"
     execute = Scrapping(origine, destination)
     execute.scrap()
     name = str(origine + destination)
