@@ -2,17 +2,23 @@
 
 <div class="container-fluid">
 
-    <div class="row mt-3">
-        <div class="col-1 cursor-pointer scale-up" style="text-align: center" onclick="url('content-rec', 'recycle/share/', 'Apprendre sur le recyclage')">
+    <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-name:spin;animation-duration:2s;z-index:100;position: fixed;padding-top:25px;margin-left:2px;margin-top: 10px;height: 80px">
+        <div class="col-1 cursor-pointer" style="text-align: center" onclick="url('content-rec', 'recycle/share/', 'Apprendre sur le recyclage')">
             <img src="{% static 'images/illustrations/learning.png' %}" class="middle-image" alt="learn recycle">
         </div>
-        <div class="col-1 cursor-pointer scale-up" onclick="url('content-rec', 'recycle/question/', 'Questions sur le recyclage')">
+    </div>
+    <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-name:spin;animation-duration:3s;animation-delay:1s;z-index:100;padding-top:25px;margin-left:2px;position: fixed;margin-top: 105px;height: 80px" >
+        <div class="col-1 cursor-pointer" onclick="url('content-rec', 'recycle/question/', 'Questions sur le recyclage')">
             <img src="{% static 'images/illustrations/communication.png' %}" class="middle-image" alt="questions recycle" id="dropdown">
         </div>
     </div>
 
     <div class="row justify-content-center" id="content-rec">
+        <div class="col-12" style="padding-top: 25%">
+            <h1>
 
+            </h1>
+        </div>
     </div>
 </div>
 

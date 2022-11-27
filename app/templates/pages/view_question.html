@@ -1,9 +1,9 @@
 {% load static %}
 
 
-<div class="container-fluid pt-5 bg-white">
-    <div class="row ">
-            <div class="col-12">
+<div class="container-fluid pt-5 mb-5">
+    <div class="row justify-content-center">
+            <div class="col-10">
                 <div class="card ">
                   <div class="card-header bg-success">
                     <h3 class="share-title">{{ question.objet }}</h3>
@@ -24,8 +24,8 @@
                 </div>
     </div>
     {% for content in answer %}
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-10">
                 <div class="card ">
                   <div class="card-header" style="color:black;">
                     <h5 class="share-title">{{ content.email }}</h5>
@@ -48,8 +48,8 @@
 <form action="{% url 'answerQuestion' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="question_id" value="{{ question.id }}">
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title" style="color: black">

@@ -1,5 +1,8 @@
 body{
     background-color: #1a252f;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color:white;
 }
@@ -31,6 +34,14 @@ body{
     0%{
         transform: rotate(0deg);
     }
+    20%{
+        transform: rotate(360deg);
+    }
+
+    40%{
+        transform: rotate(360deg);
+    }
+
     100%{
         transform: rotate(360deg);
     }
@@ -98,4 +109,12 @@ body{
 .middle-image{
     width: 30px;
     height: 30px;
+}
+#citation{
+    animation-name: spin;
+    animation-duration: 2s;
+}
+#content-email{
+    animation-name: slideRight;
+    animation-duration: 2s;
 }

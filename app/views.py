@@ -133,7 +133,7 @@ class UserView:
         except:
             pass
         success_msg = 'Vous êtes deconnectés'
-        return redirect('data')
+        return HttpResponse(success_msg)
 
 
 class Recycle:
@@ -205,3 +205,15 @@ class Recycle:
             return render(request, 'forms/new_recycle.html', locals())
 
 
+class Extra:
+    def pollution(self, request):
+        return render(request, 'pages/extra/pollution.html', locals())
+
+    def causes(self, request):
+        return render(request, 'pages/extra/causes.html', locals())
+
+    def impacts(self, request):
+        return render(request, 'pages/extra/impacts.html', locals())
+
+    def reduction(self, request):
+        return render(request, 'pages/extra/reduction.html', locals())

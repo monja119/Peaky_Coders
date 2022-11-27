@@ -30,6 +30,12 @@ urlpatterns = [
     re_path('^recycle/question/answer/$', Recycle().answer_question, name='answerQuestion'),
     re_path('^recycle/new/$', Recycle().new_recycle, name='newRecycle'),
 
+    # extra
+    re_path('^extra/pollution/$', Extra().pollution, name='extraPollution'),
+    re_path('^extra/causes/$', Extra().causes, name='causesPollution'),
+    re_path('^extra/impacts/$', Extra().impacts, name='impactsPollution'),
+    re_path('^extra/reduction/$', Extra().reduction, name='reductionPollution'),
+
 
     # MODULES
     # email

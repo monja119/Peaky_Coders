@@ -1,24 +1,51 @@
 {% load static %}
 
 <div class="container-fluid">
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-email-manager', 'module/email/', 'Suppression de Mail')">
-            gestion de suppression email
-        </h1>
-    </div>
-    <div class="row justify-content-center" id="content-email-manager">
+    <div class="row pl-5" id="content-email">
+        <div class="card mt-5 col-5 ml-5 mb-5" style="color: black;">
+            <div class="card-body login-card-body">
+                <div class="input-group mb-3">
+                  <h4>
+                    Le mail est une façon rapide de communiquer de plus en plus démocratisé, mais son utilisation n’est pas sans conséquence pour l’environnement. S’il est accompagné d’une pièce jointe d’1 Mo, un mail émet 19 g de Co2. Cet impact pris individuellement est faible mais quand on sait que 34 millions mails sont envoyés toutes les heures sans compter les spams, les conséquences deviennent importantes. Cela correspondrait à l’équivalent de 14 tonnes de pétrole.
+                  </h4>
+                </div>
 
+                <div class="row justify-content-center mb-3">
+                  <!-- /.col -->
+                  <div class="col-12">
+                    <button style="margin-top: 25%" type="submit" class="btn btn-primary btn-block cursor-pointer"  onclick="url('content-data', 'module/email/', 'Suppression de Mail')">Gerer Mon Email</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+            </div>
+        </div>
+        <div class="card mt-5 col-5 ml-5 mb-5" style="color: black;">
+            <div class="card-body login-card-body">
+                <div class="input-group mb-3">
+                  <h4>
+                    Les Data Centers consomment en moyenne en France 5,15 MWh/m2/an. En somme, un Data Center de 10 000 m2 consomme en moyenne autant qu’une ville de 50 000 habitants. Et 40% de cette consommation électrique est utilisée uniquement pour les refroidir. «En moyenne, un data center utilise aujourd’hui en permanence environ 2 kilowatts par mètre carré. Sur 500 m2, c’est 1 MW consommé en continu, soit annuellement l’équivalent de l’énergie électrique utilisée par plus de 1.000 foyers«, précise Ghislain Colom, directeur Data Center Solutions de Cofely Services, filiale du groupe Engie, Source de 2015 : actu-environnement.com
+                  </h4>
+                </div>
+
+                <div class="row justify-content-center mb-3">
+                  <!-- /.col -->
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block cursor-pointer"  onclick="url('content-data', 'module/compressor/', 'Compresseur de données')" >Compresser mes données</button>
+                  </div>
+                  <!-- /.col -->
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-data-compressor', 'module/compressor/', 'Compresseur de données')">
-            Compresseur de données
-        </h1>
-    </div>
-    <div class="row justify-content-center" id="content-data-compressor">
+    <div class="row justify-content-center">
+        <div class="col-11 justify-content-center mb-5 rounded" id="content-data" style="background-color: #1a252f">
 
+        </div>
+    </div>
     </div>
 </div>
 
 <script type="text/javascript" src="{% static 'js/main.js' %}">
 </script>
+
