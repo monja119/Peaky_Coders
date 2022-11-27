@@ -6,6 +6,18 @@ body{
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color:white;
 }
+@keyframes blink {
+    0%{
+        background-color: white;
+    }
+    50%{
+        background-color: red;
+    }
+    100%{
+        background-color:green;
+    }
+
+}
 @keyframes scaleUp {
     0%{
         size: -15px;
