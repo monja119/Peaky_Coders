@@ -1,30 +1,51 @@
 {% load static %}
 
 <div class="container-fluid">
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-extra', 'extra/pollution/', 'La pollution')">
-            La pollution
-        </h1>
+    <div class="row">
+        <div class="col-1">
+            <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-name:drifting;animation-duration:5s;z-index:100;position: fixed;padding-top:25px;margin-left:2px;margin-top: 10px;height: 80px">
+                <div class="col-1 cursor-pointer" style="text-align: center"  onclick="url('content-extra', 'extra/pollution/', 'La pollution')">
+                    <img src="{% static 'images/illustrations/pollution.png' %}" class="middle-image" alt="learn recycle">
+                </div>
+            </div>
+            <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-delay:1s;animation-name:drifting;animation-duration:5s;z-index:100;position: fixed;padding-top:25px;margin-left:2px;margin-top: 105px;height: 80px">
+                <div class="col-1 cursor-pointer" style="text-align: center"  onclick="url('content-extra', 'extra/causes/', 'Les causes de la pollution')">
+                    <img src="{% static 'images/illustrations/causes.png' %}" class="middle-image" alt="learn recycle">
+                </div>
+            </div>
+            <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-name:drifting;animation-duration:5s;z-index:100;position: fixed;padding-top:25px;margin-left:2px;margin-top: 200px;height: 80px">
+                <div class="col-1 cursor-pointer" style="text-align: center"   onclick="url('content-extra', 'extra/impacts/', 'Les impacts de la pollution')">
+                    <img src="{% static 'images/illustrations/impact.png' %}" class="middle-image" alt="learn recycle">
+                </div>
+            </div>
+            <div class="row rounded bg-primary"  style="animation-iteration-count:infinite;animation-delay:1s;animation-name:drifting;animation-duration:5s;z-index:100;position: fixed;padding-top:25px;margin-left:2px;margin-top: 300px;height: 80px">
+                <div class="col-1 cursor-pointer" style="text-align: center"   onclick="url('content-extra', 'extra/reduction/', 'Pour réduire la pollution')">
+                    <img src="{% static 'images/illustrations/solution.png' %}" class="middle-image" alt="learn recycle">
+                </div>
+            </div>
+        </div>
+        <div class="col-11 mt-5">
+
+            <div class="row justify-content-center" id="content-extra">
+                <div class="col-12 ml-5 mb-2 justify-content-center">
+                    <div class="row mb-2 justify-content-center">
+                         <h1>
+                             <b>
+                                WHAT ABOUT US ?
+                             </b>
+                         </h1>
+                    </div>
+                    <div class="row mb-2 justify-content-center">
+                        <img class="rounded" src="{% static 'images/bg/img_2.png' %}" style="width: 60%" alt="feu de brousse">
+                    </div>
+
+                 </div>
+            </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-extra', 'extra/causes/', 'Les causes de la pollution')">
-            Les causes de la pollution
-        </h1>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-extra', 'extra/impacts/', 'Les impacts de la pollution')">
-            Impactes de la pollution
-        </h1>
-    </div>
-    <div class="row justify-content-center mt-5">
-        <h1 class="cursor-pointer" onclick="url('content-extra', 'extra/reduction/', 'Pour réduire la pollution')">
-            Pour reduire la pollution
-        </h1>
-    </div>
 
-    <div class="row justify-content-center" id="content-extra">
-    </div>
 
 </div>
 

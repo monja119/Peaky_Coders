@@ -200,10 +200,10 @@ class Scrapping:
             print(shape)
 
 
-            cv2.imwrite(f"{self.origine}_cropped.png", cropped_image)
-            # WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
-            # resultats = browser.find_element(by.XPATH, "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")
-
+            cv2.imwrite(f"app/{self.origine}_cropped.png", cropped_image)
+            
+            file = f"app/{self.origine}_cropped.png"
+            return FileResponse(open(file, 'rb'), as_attachment=True)
         except:
             pass
 
@@ -218,7 +218,9 @@ class BinModule:
             execute = Scrapping(origine, destination)
             execute.scrap()
             name = str(origine + destination)
-            image = '{}.png'.format(originr)
+            from Peaky_Coders.settings import BASE_DIR
+            image = '{}.png'.format(origine)
+
             return render(request, 'pages/bin.html', locals())
         else:
             return HttpResponse('Une Erreur est survenue')
