@@ -10,6 +10,15 @@ from app.forms import AddMailForm
 from app.models import User, Email, File
 from app.views import UserView
 
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from time import sleep
+import cv2
+
 
 class EmailModule:
     def home(self, request):
@@ -126,5 +135,90 @@ class CompressorModule:
 
         with gzip.open(filename_out, "rb") as fin:
             data = fin.read()
-            ##Aficher la taille du fichier Decompresser
+            # Aficher la taille du fichier Decompresser
             print(f"Decompressed size: {sys.getsizeof(data)}")
+
+
+class Scrapping:
+
+    def __init__(self, origine, destination):
+        self.origine = origine
+        self.destination = destination
+
+        # def isConnected():
+        # eturn requests.get(env.get("LINK")).status_code == 200
+
+    def scrap(self):
+        browser = webdriver.Firefox()
+        browser.get('https://maps.google.com')
+
+        element_input_lieu = browser.find_element(By.ID, "searchboxinput")
+        element_input_lieu.send_keys(self.origine)
+        element_input_lieu.send_keys(Keys.ENTER)
+
+        try:
+            WebDriverWait(browser, 10).until(
+                EC.presence_of_all_elements_located(
+                    (
+                        By.XPATH,
+                        "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div[1]/button"
+                    )
+                )
+            )
+            itenerary_button = browser.find_element(
+                By.XPATH,
+                '/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div[1]/button'
+            )
+            itenerary_button.click()
+
+            WebDriverWait(browser, 10).until(
+                EC.presence_of_all_elements_located(
+                    (
+                        By.XPATH,
+                        "/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input"
+                    )
+                )
+            )
+            element_input_lieu = browser.find_element(
+                By.XPATH,
+                "/html/body/div[3]/div[9]/div[3]/div[1]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[1]/div/input"
+            )
+            element_input_lieu.send_keys(self.destination)
+            element_input_lieu.send_keys(Keys.ENTER)
+            sleep(10)
+            from Peaky_Coders.settings import BASE_DIR
+
+            browser.save_screenshot(f'media/picture/bin/{self.origine}.png')
+            image = browser.save_screenshot(f'{self.origine}.png')
+
+            image = cv2.imread(image)
+            shape = image.shape
+            w = image.shape[0]
+            h = image.shape[1]
+            print(shape)
+            cropped_image = image[80:w - 80, int((h / 2)) - 50:int((h) - 50)]
+            shape = cropped_image.shape
+            print(shape)
+
+
+            cv2.imwrite(f"{self.origine}.png", cropped_image)
+            # WebDriverWait(browser, 10).until(EC.presence_of_all_elements_located((By.XPATH,"/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")))
+            # resultats = browser.find_element(by.XPATH, "/html/body/div[3]/div[9]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[4]/div/div[1]/div[3]/div[2]/h1[1]/span")
+
+        except:
+            pass
+
+        browser.close()
+
+
+class BinModule:
+    def bin(self, request):
+        if request.method == 'POST':
+            origine = request.POST['place']
+            destination = "wc public"
+            execute = Scrapping(origine, destination)
+            execute.scrap()
+            name = str(origine + destination)
+            return render(request, 'pages/bin.html', locals())
+        else:
+            return HttpResponse('Une Erreur est survenue')

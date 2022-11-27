@@ -170,6 +170,7 @@ class Recycle:
         try:
             id = int(request.GET['id'])
             question = Question.objects.get(id=id)
+            answer = Answer.objects.filter(question_id=question.id)
             return render(request, 'pages/view_question.html', locals())
 
         except:
@@ -184,11 +185,12 @@ class Recycle:
 
             answer.save()
 
-            return HttpResponse('Question répondue')
+            return redirect('home')
 
         else:
             error_msg = 'Une Erreur survenue'
             render(request, 'tabs/errors.html', locals())
+
     def new_recycle(self, request):
         if request.method == 'POST':
             recycle = Recyclage()
@@ -201,3 +203,5 @@ class Recycle:
             return redirect('home')
         else:
             return render(request, 'forms/new_recycle.html', locals())
+
+

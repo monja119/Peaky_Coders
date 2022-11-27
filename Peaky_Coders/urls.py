@@ -30,6 +30,7 @@ urlpatterns = [
     re_path('^recycle/question/answer/$', Recycle().answer_question, name='answerQuestion'),
     re_path('^recycle/new/$', Recycle().new_recycle, name='newRecycle'),
 
+
     # MODULES
     # email
     re_path('^module/email/$', EmailModule().home, name='emailModule'),
@@ -39,6 +40,8 @@ urlpatterns = [
     # compressor
     re_path('^module/compressor/', CompressorModule().add_file, name='compressorAddFileAddModule'),
 
+    # bin
+    re_path('^iter/$', BinModule().bin, name='binview'),
 
 
 ]

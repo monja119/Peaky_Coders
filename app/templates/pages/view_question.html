@@ -1,7 +1,7 @@
 {% load static %}
 
 
-<div class="container-fluid pt-5">
+<div class="container-fluid pt-5 bg-white">
     <div class="row ">
             <div class="col-12">
                 <div class="card ">
@@ -23,16 +23,36 @@
                 </div>
                 </div>
     </div>
+    {% for content in answer %}
+    <div class="row">
+        <div class="col-12">
+                <div class="card ">
+                  <div class="card-header" style="color:black;">
+                    <h5 class="share-title">{{ content.email }}</h5>
 
+                    <div class="share-tools">
+                      {{ content.date}}
+                    </div>
+                    <!-- /.share-tools -->
+                  </div>
+                  <!-- /.share-header -->
+                  <div class="share-body p-5 bg-white" style="color:black;text-overflow: ellipsis;white-space: pre-wrap; overflow-wrap: break-word">
 
+                            {{ content.content }}
+                  </div>
+                  <!-- /.share-body -->
+                </div>
+                </div>
+    </div>
+    {% endfor %}
 <form action="{% url 'answerQuestion' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="hidden" name="question_id" value="{{ question.id }}" style="color:black">
+    <input type="hidden" name="question_id" value="{{ question.id }}">
       <div class="row">
         <div class="col-md-12">
           <div class="card card-outline card-info">
             <div class="card-header">
-              <h3 class="card-title">
+              <h3 class="card-title" style="color: black">
                 Ecrire votre idée
               </h3>
               <!-- /. tools -->

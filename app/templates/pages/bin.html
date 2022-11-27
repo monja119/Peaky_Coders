@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id="page-title">
+        {% block title %}
+        {{ place }}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row p-2 bg-dark  d-block d-sm-none">
+                <div class="col-8">
+                    <img src="{% static 'images/illustrations/extra.png' %}" style="width: 15%;" alt="dropdown" id="dropdown">
+                </div>
+            </div>
+            <div class="row d-none d-sm-flex" style="height: 52px">
+                <div onclick="homepage()" class="col-2" style="background-color: rgba(20, 20, 20, 0.5);text-align:center;cursor: pointer;">
+                    <img src="{% static 'images/illustrations/logo.png' %}" class="mt-2" style="width: 15%;" alt="dropdown" id="dropdown">
+                </div>
+                <div class="col-2 dropdown-list" onclick="url('content', 'data/', 'Data', '')">
+                    <img src="{% static 'images/illustrations/data.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
+                    Data
+                </div>
+                <div id="recyclage" class="col-2 dropdown-list" onclick="url('content', 'recyclage/', 'Recyclage', '')">
+                    <img src="{% static 'images/illustrations/recyclage.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
+                    Recyclage
+                </div>
+                <div class="col-2 dropdown-list" onclick="url('content', 'bin/', 'Bin', '')">
+                    <img src="{% static 'images/illustrations/bin.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
+                    Bin
+                </div>
+                <div class="col-2 dropdown-list" onclick="url('content', 'extra/', 'Extra', '')">
+                    <img src="{% static 'images/illustrations/dropdown.png' %}" class="ico-tab" alt="dropdown" id="dropdown">
+                    Extra
+                </div>
+
+                <div class="col-2 pt-2" style="background-color: rgba(20, 100, 20, 0.5);text-align: center;">
+                    <input type="text" class="rounded" style="width: 80%;background: rgba(200, 200, 200, 0.3);border: 1px solid black">
+                    <img src="{% static 'images/illustrations/search.png' %}" class="ico-tab mt-1" alt="dropdown" id="dropdown" style="cursor: pointer;">
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <input type="hidden" id="base">
+
+    <section id="content">
+        {% block content %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="card mt-5 col-10 mb-5" style="color: black">
+                    <div class="card-body login-card-body">
+                      <p class="login-box-msg">Rechercher un endroit meilleur pour l'hygiène</p>
+
+                      <form action="{% url 'binview' %}" method="post">
+                          {% csrf_token%}
+                        <div class="input-group mb-3">
+                          <input class="col-12" type="text" name="place" placeholder="Votre place" id="place" required>
+                        </div>
+
+                        <div class="row justify-content-center mb-3">
+                          <!-- /.col -->
+                          <div class="col-12">
+                            <button type="submit" class="btn btn-success btn-block">Iterer</button>
+                          </div>
+                          <!-- /.col -->
+                        </div>
+                      </form>
+
+                    </div>
+                    <!-- /.login-card-body -->
+                  </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+               <div class="col-10">
+                   content
+               </div>
+
+            </div>
+        </div>
+{% endblock %}
+    </section>
+
+
+    <footer>
+    </footer>
+    <script type="text/javascript" src="{% static 'js/main.js' %}">
+    </script>
+
+</body>
+</html>

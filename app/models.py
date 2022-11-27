@@ -50,3 +50,6 @@ class Answer(models.Model):
     question_id = models.IntegerField()
     content = models.TextField()
     date = models.DateField(auto_now=True)
+
+class Bin(models.Model):
+    file = models.FileField()
